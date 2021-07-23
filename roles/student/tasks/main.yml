@@ -1,0 +1,26 @@
+---
+# tasks file for Student
+- name: Create mysql deployment
+  community.kubernetes.k8s:
+    state: present 
+    definition: "{{ lookup('template', 'sql-deployment.yaml.j2') }}"  
+  
+
+- name: Create the mysql service
+  community.kubernetes.k8s:
+    state: present
+    definition: "{{ lookup('template', 'sql-service.yaml.j2') }}"
+    
+
+- name: Create the student deployment
+  community.kubernetes.k8s:
+    state: present 
+    definition: "{{ lookup('template', 'app-deployment.yaml.j2') }}"
+
+
+
+- name: Create the student service
+  community.kubernetes.k8s:
+    state: present 
+    definition: "{{ lookup('template', 'app-service.yaml.j2') }}"
+

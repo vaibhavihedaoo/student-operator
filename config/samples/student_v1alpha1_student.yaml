@@ -1,0 +1,15 @@
+apiVersion: student.example.com/v1alpha1
+kind: Student
+metadata:
+  name: student-sample
+spec:
+  # Add fields here
+  image:
+        app:
+            repository: vaibhavih/assignment
+            tag: latest
+            pullPolicy: IfNotPresent
+        db:
+           repository: mysql
+           tag: latest
+           pullPolicy: IfNotPresent

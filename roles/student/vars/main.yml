@@ -1,0 +1,8 @@
+---
+
+# vars file for Student
+MYSQL_DB: flaskapi
+
+MYSQL_ROOT_PASSWORD: admin123
+
+

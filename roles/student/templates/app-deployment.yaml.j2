@@ -1,0 +1,29 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: student-deployment
+  namespace: student-operator-system
+  labels:
+    app: student 
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: student
+  template:
+    metadata:
+      labels:
+        app: student
+    spec:
+      containers:
+      - name: student
+        image: vaibhavih/assignment
+                   
+        ports:
+        - containerPort: 5000
+        env:
+        - name: db_root_password
+          value: YWRtaW4xMjMK
+        - name: db_name
+          value: flaskapi
+

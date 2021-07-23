@@ -1,0 +1,26 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: mysql
+  namespace: student-operator-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+       containers:
+       - name: mysql
+         image: mysql
+         imagePullPolicy: IfNotPresent
+         ports:
+         - containerPort: 3306
+         env:
+         - name: MYSQL_DB
+           value: "{{ MYSQL_DB }}"
+         - name: MYSQL_ROOT_PASSWORD
+           value: "{{ MYSQL_ROOT_PASSWORD }}"
